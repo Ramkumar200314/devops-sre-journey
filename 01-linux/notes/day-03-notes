@@ -1,0 +1,263 @@
+# Day 3 - Linux Notes
+
+## Input / Output Streams
+
+Linux has three standard input/output streams:
+
+| Stream | Abbreviation | File Descriptor |
+|---------|--------------|-----------------|
+| Standard Input | stdin | 0 |
+| Standard Output | stdout | 1 |
+| Standard Error | stderr | 2 |
+
+---
+
+## Input / Output Redirection
+
+### Redirect Output
+
+```bash
+command > file
+```
+
+Writes output to a file and overwrites existing content.
+
+Example:
+
+```bash
+ls > files.txt
+```
+
+---
+
+### Append Output
+
+```bash
+command >> file
+```
+
+Appends output to an existing file.
+
+Example:
+
+```bash
+echo "Linux" >> notes.txt
+```
+
+---
+
+### Redirect Input
+
+```bash
+command < file
+```
+
+Example:
+
+```bash
+sort < names.txt
+```
+
+---
+
+### Redirect Standard Error
+
+```bash
+command 2> errors.txt
+```
+
+---
+
+### Redirect Both Output and Error
+
+```bash
+command > output.txt 2>&1
+```
+
+---
+
+## Null Device
+
+```
+/dev/null
+```
+
+Used to discard unwanted output.
+
+Example:
+
+```bash
+ls existing missing > /dev/null 2>&1
+```
+
+---
+
+## Comparing Files
+
+### diff
+
+Displays line-by-line differences.
+
+```bash
+diff file1 file2
+```
+
+### sdiff
+
+Displays differences side-by-side.
+
+```bash
+sdiff file1 file2
+```
+
+### cmp
+
+Compares files byte by byte.
+
+```bash
+cmp file1 file2
+```
+
+---
+
+## Environment Variables
+
+Display all variables
+
+```bash
+printenv
+```
+
+or
+
+```bash
+env
+```
+
+Display one variable
+
+```bash
+echo $HOME
+```
+
+Create variable
+
+```bash
+MYVAR="Hello"
+```
+
+Export variable
+
+```bash
+export MYVAR
+```
+
+---
+
+## Process Management
+
+View processes
+
+```bash
+ps
+```
+
+Monitor processes
+
+```bash
+top
+```
+
+Display process tree
+
+```bash
+pstree
+```
+
+---
+
+## Background & Foreground Jobs
+
+Run in background
+
+```bash
+command &
+```
+
+Suspend process
+
+```
+Ctrl + Z
+```
+
+Resume in background
+
+```bash
+bg
+```
+
+Resume in foreground
+
+```bash
+fg
+```
+
+List jobs
+
+```bash
+jobs
+```
+
+---
+
+## Killing Processes
+
+Graceful termination
+
+```bash
+kill PID
+```
+
+Force kill
+
+```bash
+kill -9 PID
+```
+
+Display signals
+
+```bash
+kill -l
+```
+
+---
+
+## Exit Status
+
+Display previous command status
+
+```bash
+echo $?
+```
+
+Exit script
+
+```bash
+exit
+```
+
+---
+
+## Summary
+
+Today I learned:
+
+- Standard Input, Output and Error
+- File Redirection
+- Null Device
+- File Comparison
+- Environment Variables
+- Process Management
+- Background & Foreground Jobs
+- Linux Signals
+- Exit Status in Bash
