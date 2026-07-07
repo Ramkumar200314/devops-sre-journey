@@ -1,0 +1,203 @@
+# Day 3 - Linux Lab Notes
+
+## Lab 1 - Input and Output Redirection
+
+### Redirect Output
+
+```bash
+ls > files.txt
+```
+
+### Append Output
+
+```bash
+echo "Linux" >> files.txt
+```
+
+### Redirect Errors
+
+```bash
+ls invalid_directory 2> errors.txt
+```
+
+### Redirect Output and Errors
+
+```bash
+ls existing invalid > output.txt 2>&1
+```
+
+---
+
+## Lab 2 - Null Device
+
+Ignore unwanted output
+
+```bash
+ls existing invalid > /dev/null 2>&1
+```
+
+---
+
+## Lab 3 - Compare Files
+
+Create two files
+
+```bash
+touch file1 file2
+```
+
+Compare
+
+```bash
+diff file1 file2
+cmp file1 file2
+sdiff file1 file2
+```
+
+---
+
+## Lab 4 - Environment Variables
+
+Display variables
+
+```bash
+printenv
+```
+
+Check HOME
+
+```bash
+echo $HOME
+```
+
+Create variable
+
+```bash
+NAME="Ram"
+```
+
+Export variable
+
+```bash
+export NAME
+```
+
+Verify
+
+```bash
+echo $NAME
+```
+
+---
+
+## Lab 5 - Process Management
+
+Display running processes
+
+```bash
+ps
+```
+
+Real-time monitor
+
+```bash
+top
+```
+
+Process tree
+
+```bash
+pstree
+```
+
+---
+
+## Lab 6 - Background Processes
+
+Run command in background
+
+```bash
+sleep 100 &
+```
+
+List jobs
+
+```bash
+jobs
+```
+
+Bring to foreground
+
+```bash
+fg
+```
+
+Send back to background
+
+```bash
+bg
+```
+
+---
+
+## Lab 7 - Kill Process
+
+Start a process
+
+```bash
+sleep 100
+```
+
+Find PID
+
+```bash
+ps
+```
+
+Terminate
+
+```bash
+kill PID
+```
+
+Force terminate
+
+```bash
+kill -9 PID
+```
+
+---
+
+## Lab 8 - Exit Status
+
+Check previous command status
+
+```bash
+echo $?
+```
+
+Exit with success
+
+```bash
+exit 0
+```
+
+Exit with failure
+
+```bash
+exit 1
+```
+
+---
+
+## Practical Skills Gained
+
+- Practiced input and output redirection.
+- Redirected errors separately.
+- Used `/dev/null` to suppress output.
+- Compared files using `diff`, `cmp` and `sdiff`.
+- Worked with environment variables.
+- Managed Linux processes.
+- Controlled foreground and background jobs.
+- Terminated processes using different signals.
+- Checked exit status in Bash.
