@@ -1,0 +1,269 @@
+# 🐍 Python Notes – Day 02
+**Course:** 100 Days of Code: The Complete Python Pro Bootcamp  
+**Section:** Day 2 – Beginner: Understanding Data Types and Manipulating Strings
+
+---
+
+# 📚 Topics Covered
+
+- Python Primitive Data Types
+- Type Errors
+- Type Checking
+- Type Conversion
+- Mathematical Operations in Python
+- BMI Calculator (Coding Exercise)
+- Number Manipulation
+- F-Strings
+- Mathematical Operations Quiz
+- Tip Calculator Project
+
+---
+
+# 1️⃣ Python Primitive Data Types
+
+Python provides several built-in data types.
+
+### Integer (`int`)
+
+```python
+age = 23
+```
+
+### Float (`float`)
+
+```python
+height = 5.9
+```
+
+### String (`str`)
+
+```python
+name = "Ram"
+```
+
+### Boolean (`bool`)
+
+```python
+is_student = True
+```
+
+---
+
+# 2️⃣ Type Errors
+
+A type error occurs when incompatible data types are used together.
+
+### Example
+
+```python
+print("Age: " + 23)
+```
+
+This results in a **TypeError** because a string cannot be directly concatenated with an integer.
+
+---
+
+# 3️⃣ Type Checking
+
+Use the `type()` function to check the data type of a variable.
+
+### Example
+
+```python
+age = 23
+
+print(type(age))
+```
+
+Output
+
+```
+<class 'int'>
+```
+
+---
+
+# 4️⃣ Type Conversion
+
+Convert one data type into another using built-in functions.
+
+### Common Functions
+
+```python
+int()
+float()
+str()
+bool()
+```
+
+### Example
+
+```python
+age = 23
+
+print("Age: " + str(age))
+```
+
+---
+
+# 5️⃣ Mathematical Operations
+
+Python supports basic arithmetic operations.
+
+| Operator | Description |
+|----------|-------------|
+| `+` | Addition |
+| `-` | Subtraction |
+| `*` | Multiplication |
+| `/` | Division |
+| `//` | Floor Division |
+| `%` | Modulus |
+| `**` | Exponent |
+
+### Example
+
+```python
+print(10 + 5)
+print(10 - 5)
+print(10 * 5)
+print(10 / 5)
+print(10 // 3)
+print(10 % 3)
+print(2 ** 3)
+```
+
+---
+
+# 6️⃣ BMI Calculator (Coding Exercise)
+
+Created a simple BMI calculator using:
+
+- User input
+- Type conversion
+- Mathematical operations
+
+### Formula
+
+```
+BMI = Weight / Height²
+```
+
+Concepts Practiced
+
+- `input()`
+- `float()`
+- Variables
+- Arithmetic operators
+
+---
+
+# 7️⃣ Number Manipulation
+
+Learned how Python works with numbers.
+
+Examples include:
+
+- Rounding values using `round()`
+- Assignment operators (`+=`, `-=`, `*=`, `/=`)
+- Order of operations (PEMDAS)
+
+Example
+
+```python
+score = 0
+
+score += 1
+
+print(score)
+```
+
+---
+
+# 8️⃣ F-Strings
+
+F-strings provide a simple way to format strings.
+
+### Syntax
+
+```python
+name = "Ram"
+age = 23
+
+print(f"My name is {name} and I am {age} years old.")
+```
+
+Output
+
+```
+My name is Ram and I am 23 years old.
+```
+
+---
+
+# 9️⃣ Mathematical Operations Quiz
+
+Practiced mathematical expressions, operator precedence, and applying arithmetic operations correctly.
+
+---
+
+# 🔟 Mini Project – Tip Calculator
+
+### Objective
+
+Build a Tip Calculator that:
+
+1. Accepts the total bill amount.
+2. Accepts the tip percentage.
+3. Accepts the number of people.
+4. Calculates the amount each person should pay.
+
+### Concepts Used
+
+- Variables
+- User Input
+- Type Conversion
+- Mathematical Operations
+- F-Strings
+
+---
+
+# 📝 Key Concepts Learned
+
+- Understanding Python primitive data types.
+- Identifying and fixing type errors.
+- Checking data types using `type()`.
+- Converting between data types.
+- Performing arithmetic operations.
+- Understanding operator precedence.
+- Formatting output using f-strings.
+- Applying concepts through the BMI Calculator and Tip Calculator projects.
+
+---
+
+# 💡 Quick Revision
+
+| Function / Operator | Purpose |
+|---------------------|---------|
+| `type()` | Check data type |
+| `int()` | Convert to integer |
+| `float()` | Convert to float |
+| `str()` | Convert to string |
+| `round()` | Round numbers |
+| `f""` | Format strings |
+| `+ - * / // % **` | Arithmetic operations |
+
+---
+
+# ⚡ Best Practices
+
+- Convert user input before performing calculations.
+- Use descriptive variable names.
+- Use f-strings instead of string concatenation for better readability.
+- Verify data types when debugging errors.
+- Follow Python's operator precedence when writing expressions.
+
+---
+
+# 🎯 Day 02 Summary
+
+Today I learned Python's primitive data types, type checking, type conversion, and mathematical operations. I practiced solving programming exercises, including a BMI Calculator, learned number manipulation and f-strings, completed the mathematical operations quiz, and built a Tip Calculator project. These concepts strengthened my understanding of Python fundamentals and prepared me for writing more practical programs in future lessons.
