@@ -1,0 +1,245 @@
+# 🐍 Python Notes – Day 01
+**Course:** 100 Days of Code: The Complete Python Pro Bootcamp  
+**Section:** Day 1 – Beginner: Working with Variables in Python to Manage Data
+
+---
+
+# 📚 Topics Covered
+
+- Printing in Python
+- String Manipulation
+- User Input (`input()`)
+- Variables
+- Variable Naming Rules
+- Band Name Generator Project
+
+---
+
+# 1️⃣ Printing in Python
+
+The `print()` function is used to display output on the screen.
+
+### Syntax
+
+```python
+print("Hello World!")
+```
+
+### Example
+
+```python
+print("Welcome to Python")
+```
+
+Output
+
+```
+Welcome to Python
+```
+
+---
+
+# 2️⃣ String Manipulation
+
+## String Concatenation
+
+Use `+` to combine strings.
+
+```python
+print("Hello " + "Angela")
+```
+
+Output
+
+```
+Hello Angela
+```
+
+---
+
+## New Line Character
+
+Use `\n` to print on the next line.
+
+```python
+print("Hello\nWorld")
+```
+
+Output
+
+```
+Hello
+World
+```
+
+---
+
+# 3️⃣ User Input
+
+The `input()` function accepts input from the user.
+
+### Syntax
+
+```python
+input("Enter your name: ")
+```
+
+Example
+
+```python
+print("Hello " + input("What is your name? "))
+```
+
+Sample Output
+
+```
+What is your name?
+Ram
+Hello Ram
+```
+
+---
+
+# 4️⃣ Variables
+
+Variables store values in memory.
+
+### Syntax
+
+```python
+name = "Ram"
+```
+
+Example
+
+```python
+username = input("What is your name? ")
+print(username)
+```
+
+---
+
+## Using Variables
+
+```python
+username = input("What is your name? ")
+length = len(username)
+
+print(length)
+```
+
+---
+
+# 5️⃣ len() Function
+
+`len()` returns the number of characters in a string.
+
+Example
+
+```python
+name = "Angela"
+
+print(len(name))
+```
+
+Output
+
+```
+6
+```
+
+---
+
+# 6️⃣ Variable Naming Rules
+
+✅ Use meaningful names
+
+```python
+student_name = "Ram"
+```
+
+✅ Use letters, numbers and underscores
+
+```python
+user_age = 23
+```
+
+❌ Do not start with numbers
+
+```python
+2name = "Ram"
+```
+
+❌ Do not use spaces
+
+```python
+user name = "Ram"
+```
+
+❌ Do not use Python keywords
+
+```python
+print = "Hello"
+```
+
+---
+
+# 7️⃣ Mini Project – Band Name Generator
+
+### Objective
+
+Create a simple program that:
+
+1. Greets the user.
+2. Asks for the city they grew up in.
+3. Asks for their pet's name.
+4. Combines both values to generate a band name.
+
+### Concepts Used
+
+- `print()`
+- `input()`
+- Variables
+- String Concatenation
+
+---
+
+# 📝 Key Concepts Learned
+
+- Printing output using `print()`
+- Combining strings using `+`
+- Using `\n` for new lines
+- Taking user input with `input()`
+- Storing values in variables
+- Using `len()` to count characters
+- Following Python variable naming conventions
+- Building a beginner Python project using the concepts learned
+
+---
+
+# 💡 Quick Revision
+
+| Function | Purpose |
+|----------|---------|
+| `print()` | Display output |
+| `input()` | Get user input |
+| `len()` | Count characters |
+| `+` | Concatenate strings |
+| `\n` | Print on a new line |
+| `=` | Assign value to a variable |
+
+---
+
+# ⚡ Best Practices
+
+- Use descriptive variable names.
+- Follow Python naming conventions (`snake_case`).
+- Keep code readable and properly indented.
+- Test programs with different user inputs.
+- Write small programs regularly to reinforce concepts.
+
+---
+
+# 🎯 Day 01 Summary
+
+Today I learned the fundamentals of Python programming, including printing output, string manipulation, taking user input, creating and using variables, applying variable naming conventions, and completing my first mini project—the **Band Name Generator**. These concepts form the foundation for writing Python programs and are essential for future automation, scripting, and DevOps tasks.

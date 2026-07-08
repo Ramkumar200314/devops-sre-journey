@@ -1,0 +1,315 @@
+# Day 04 — 2026-07-08
+
+# 📖 Linux Notes — Cron Jobs, Shell History, Package Management & User Privileges
+
+## 📌 Topics Covered
+
+- Cron Jobs (Task Scheduling)
+- Crontab Commands
+- Cron Expressions
+- Redirecting Cron Output
+- Cron Shortcuts
+- Switching Users (`su`)
+- Running Commands as Another User (`sudo`)
+- Shell History
+- History Expansion
+- Command Line Editing (vi mode)
+- Package Management (RPM, YUM, DNF, DEB, APT)
+
+---
+
+# ⏰ Cron Jobs
+
+Cron is a time-based job scheduling service used to automate repetitive tasks.
+
+### Basic Commands
+
+```bash
+crontab -l      # List cron jobs
+crontab -e      # Edit cron jobs
+crontab -r      # Remove all cron jobs
+crontab filename # Install cron jobs from a file
+```
+
+---
+
+## Cron Entry Format
+
+```
+* * * * * command
+│ │ │ │ │
+│ │ │ │ └── Day of Week (0-6)
+│ │ │ └──── Month (1-12)
+│ │ └────── Day of Month (1-31)
+│ └──────── Hour (0-23)
+└────────── Minute (0-59)
+```
+
+### Example
+
+Run every Monday at 07:00
+
+```cron
+0 7 * * 1 /opt/sales/bin/weekly-report
+```
+
+---
+
+## Redirecting Output
+
+Run every day at 02:00 and store output in a log file.
+
+```cron
+0 2 * * * /root/backupdb > /tmp/db.log 2>&1
+```
+
+---
+
+## More Cron Examples
+
+Run every 15 minutes
+
+```cron
+0,15,30,45 * * * * /opt/acme/bin/15-min-check
+```
+
+or
+
+```cron
+*/15 * * * * /opt/acme/bin/15-min-check
+```
+
+Run during the first five minutes of every hour
+
+```cron
+0-4 * * * * /opt/acme/bin/first-five-mins
+```
+
+---
+
+## Cron Shortcuts
+
+```bash
+@yearly
+@annually
+@monthly
+@weekly
+@daily
+@hourly
+@midnight
+```
+
+---
+
+# 👤 Switching Users
+
+Switch to another user
+
+```bash
+su username
+```
+
+Become root
+
+```bash
+su
+```
+
+Exit current shell
+
+```bash
+exit
+```
+
+---
+
+# 🔐 sudo Commands
+
+```bash
+sudo command
+sudo -l
+sudo -u username command
+sudo su
+```
+
+Edit sudo configuration safely
+
+```bash
+visudo
+```
+
+---
+
+# 📜 Shell History
+
+Display history
+
+```bash
+history
+```
+
+History file
+
+```bash
+~/.bash_history
+```
+
+History size
+
+```bash
+HISTSIZE=1000
+```
+
+History expansion examples
+
+```bash
+!!
+!n
+!-n
+!string
+```
+
+---
+
+# ⌨️ Command Line Editing
+
+Enable vi editing mode
+
+```bash
+set -o vi
+```
+
+---
+
+# 📦 Linux Package Management
+
+## RPM Based Distributions
+
+Examples
+
+- RHEL
+- CentOS
+- AlmaLinux
+- Rocky Linux
+
+Package Managers
+
+- RPM
+- YUM
+- DNF
+
+Useful Commands
+
+```bash
+rpm -qa
+rpm -ivh package.rpm
+rpm -e package
+rpm -ql package
+```
+
+### YUM
+
+```bash
+yum search
+yum info package
+yum install package
+```
+
+### DNF
+
+```bash
+dnf search
+dnf info package
+dnf install package
+dnf upgrade
+```
+
+---
+
+## DEB Based Distributions
+
+Examples
+
+- Debian
+- Ubuntu
+- Linux Mint
+- Kali Linux
+
+Package Manager
+
+- APT
+
+Useful Commands
+
+```bash
+apt-cache search
+apt show package
+apt install package
+apt remove package
+apt purge package
+apt update
+apt upgrade
+apt autoremove
+```
+
+---
+
+# 📝 Summary
+
+Today I learned:
+
+- Cron service schedules and automates repetitive tasks.
+- How to create, edit, list and remove cron jobs.
+- Cron scheduling syntax and shortcuts.
+- Switching users using `su` and executing privileged commands using `sudo`.
+- Shell history, history expansion and command-line editing.
+- Package management concepts in RPM and DEB based Linux distributions.
+
+---
+
+# 💡 Additional Notes (Useful Tips)
+
+### Check if cron service is running
+
+```bash
+systemctl status cron
+```
+
+or (RHEL/CentOS)
+
+```bash
+systemctl status crond
+```
+
+### Verify a scheduled cron job
+
+```bash
+crontab -l
+```
+
+### Common Cron Special Characters
+
+| Symbol | Meaning |
+|---------|----------|
+| `*` | Every value |
+| `,` | Multiple values |
+| `-` | Range |
+| `/` | Step values |
+
+Example:
+
+```cron
+*/5 * * * *
+```
+
+Runs every 5 minutes.
+
+### Best Practices
+
+- Always use absolute paths in cron jobs.
+- Redirect output to log files for troubleshooting.
+- Test scripts manually before scheduling them.
+- Keep cron jobs small and well documented.
+- Verify permissions before scheduling scripts.
+
+---
