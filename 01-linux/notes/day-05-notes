@@ -1,0 +1,367 @@
+# Linux Notes — Day 05
+
+## Section 05: Linux Boot Process & System Logging
+
+---
+
+# 1. Linux Boot Process
+
+The Linux boot process is the sequence of steps performed when a Linux system starts.
+
+## Boot Sequence
+
+```text
+Power On
+    ↓
+BIOS / UEFI
+    ↓
+Boot Loader (GRUB/LILO)
+    ↓
+Linux Kernel (vmlinuz)
+    ↓
+initrd / initramfs
+    ↓
+systemd (PID 1)
+    ↓
+System Services
+    ↓
+Login Screen / Shell
+```
+
+---
+
+## BIOS / UEFI
+
+- BIOS (Basic Input Output System) initializes the hardware.
+- UEFI is the modern replacement for BIOS.
+- Performs POST (Power-On Self-Test).
+- Searches for a bootable device.
+
+### Interview Point
+
+- BIOS/UEFI initializes hardware before the operating system starts.
+
+---
+
+## Boot Loader
+
+A boot loader loads the Linux kernel into memory.
+
+Examples:
+
+- GRUB (Most commonly used)
+- LILO (Older boot loader)
+
+Responsibilities:
+
+- Displays the boot menu.
+- Allows selecting an operating system.
+- Loads the Linux kernel.
+
+---
+
+## Linux Kernel
+
+Kernel file:
+
+```text
+vmlinuz
+```
+
+Responsibilities:
+
+- Initializes CPU and memory.
+- Detects hardware.
+- Loads device drivers.
+- Mounts the root filesystem.
+- Starts the first process (`systemd`).
+
+---
+
+## initrd / initramfs
+
+Temporary root filesystem loaded into RAM.
+
+Purpose:
+
+- Loads required drivers.
+- Mounts the real root filesystem.
+- Hands control to the Linux kernel.
+
+---
+
+## systemd
+
+`systemd` is the first userspace process.
+
+Process ID:
+
+```text
+PID = 1
+```
+
+Responsibilities:
+
+- Starts services.
+- Manages processes.
+- Handles system startup.
+- Controls shutdown and reboot.
+
+Useful commands:
+
+```bash
+systemctl status
+systemctl start <service_name>
+systemctl stop <service_name>
+systemctl restart <service_name>
+systemctl enable <service_name>
+systemctl disable <service_name>
+```
+
+---
+
+## Runlevels & Targets
+
+### Legacy Runlevels
+
+| Runlevel | Description |
+|----------|-------------|
+| 0 | Shutdown |
+| 1 | Single User Mode |
+| 3 | Multi User Mode |
+| 5 | Graphical Mode |
+| 6 | Reboot |
+
+### Systemd Targets
+
+| Runlevel | Target |
+|----------|--------|
+| 0 | poweroff.target |
+| 1 | rescue.target |
+| 3 | multi-user.target |
+| 5 | graphical.target |
+| 6 | reboot.target |
+
+Check default target:
+
+```bash
+systemctl get-default
+```
+
+---
+
+## Shutdown Commands
+
+```bash
+shutdown now
+shutdown -r now
+shutdown -h now
+reboot
+poweroff
+halt
+```
+
+---
+
+# 2. System Logging
+
+Linux records system and application events in log files.
+
+Logs help administrators troubleshoot problems and monitor system health.
+
+---
+
+## Common Log Files
+
+```text
+/var/log/
+/var/log/syslog
+/var/log/messages
+/var/log/auth.log
+/var/log/dmesg
+```
+
+---
+
+## dmesg
+
+Displays kernel boot messages.
+
+Commands:
+
+```bash
+dmesg
+dmesg | less
+dmesg | grep error
+```
+
+Used for:
+
+- Hardware detection
+- Boot issues
+- Driver errors
+- USB detection
+- Disk failures
+
+---
+
+## Syslog
+
+Syslog is the standard Linux logging system.
+
+It collects logs from:
+
+- Kernel
+- Applications
+- Services
+- System processes
+
+---
+
+## Syslog Facilities
+
+Facilities identify where the log originated.
+
+Examples:
+
+- auth
+- mail
+- cron
+- daemon
+- kern
+- local0 - local7
+
+---
+
+## Syslog Severity Levels
+
+| Level | Meaning |
+|--------|----------|
+| 0 | Emergency |
+| 1 | Alert |
+| 2 | Critical |
+| 3 | Error |
+| 4 | Warning |
+| 5 | Notice |
+| 6 | Information |
+| 7 | Debug |
+
+Easy way to remember:
+
+```text
+Emergency → Debug
+Highest Severity → Lowest Severity
+```
+
+---
+
+## Logger Command
+
+Generate your own log message.
+
+```bash
+logger "Backup completed successfully"
+```
+
+Useful in Bash scripts and automation.
+
+---
+
+## Log Rotation
+
+Linux uses **logrotate** to manage log files.
+
+Purpose:
+
+- Prevent disk from filling up.
+- Compress old log files.
+- Delete outdated logs.
+- Create new log files automatically.
+
+Command:
+
+```bash
+logrotate
+```
+
+---
+
+# DevOps / SRE Notes
+
+## Why the Boot Process Matters
+
+Understanding the Linux boot process helps troubleshoot:
+
+- Server not booting
+- Kernel panic
+- GRUB failures
+- Failed services after reboot
+
+---
+
+## Why Logs Matter
+
+Logs are the first place to investigate when:
+
+- Applications crash
+- Services fail
+- Authentication issues
+- Docker containers stop
+- Kubernetes Pods fail
+
+---
+
+## Why systemctl Matters
+
+Most modern Linux servers use `systemd`.
+
+Common commands:
+
+```bash
+systemctl status nginx
+systemctl restart nginx
+systemctl enable nginx
+journalctl -u nginx
+```
+
+These commands are frequently used in production environments.
+
+---
+
+## Why dmesg Matters
+
+Use `dmesg` to troubleshoot:
+
+- Hardware failures
+- Memory errors
+- USB detection issues
+- Disk failures
+- Driver loading problems
+
+---
+
+# Interview Points
+
+- `systemd` is the first userspace process (PID 1).
+- GRUB is the most common Linux boot loader.
+- `dmesg` displays kernel boot messages.
+- System logs are stored under `/var/log`.
+- `logger` creates custom log messages.
+- `logrotate` prevents log files from consuming all disk space.
+- Logs are one of the first things checked during production incidents.
+
+---
+
+# Commands to Revise
+
+```bash
+dmesg
+systemctl status
+systemctl get-default
+systemctl reboot
+systemctl poweroff
+shutdown now
+logger
+journalctl
+logrotate
+```
